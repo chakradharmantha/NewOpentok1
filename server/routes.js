@@ -66,8 +66,14 @@ module.exports = function (app, config, redis, ot, redirectSSL) {
   // This room has to not already exist though.
   app.get('/:room', function(req, res) {
     var room = req.param('room'),
-      apiKey = req.param('apiKey'),
-      secret = req.param('secret');
+     // apiKey = req.param('apiKey'),
+	    apiKey="45644902";
+//	secret = req.param('secret');
+    secret="db8fbb0775b923c89422b7a09dceeac4570d2efe";
+    console.log("------------room"+room) 
+    console.log("------------room"+apiKey) 
+	console.log("------------room"+secret) 
+     // secret = req.param('secret');
     res.format({
       json: function() {
         var goToRoom = function(err, sessionId, apiKey, secret) {

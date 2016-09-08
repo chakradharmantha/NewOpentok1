@@ -5,7 +5,7 @@ module.exports = {
         login: "./src/js/login/app.js",
         room: './src/js/app.js',
         screen: './src/js/screen/app.js',
-        whiteboard: './src/js/whiteboard/app.js'
+       
     },
     output: {
         path: './public/js/',

@@ -9,8 +9,7 @@ require('opentok-whiteboard/opentok-whiteboard.css');
 require('opentok-editor');
 require('opentok-editor/opentok-editor.css');
 
-angular.module('opentok-meet', ['opentok', 'opentok-whiteboard',
-  'opentok-editor']);
+angular.module('opentok-meet', ['opentok', 'opentok-whiteboard','opentok-editor']);
 
 require('./directives.js');
 require('./sync-click.js');

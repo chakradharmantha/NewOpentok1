@@ -35,7 +35,6 @@ angular.module('opentok-meet').directive('screenShareDialogs', function () {
 
       OT.checkScreenSharingCapability(function(response) {
         var supported = response.supported && response.extensionRegistered !== false;
-  
         if (supported !== $scope.screenShareSupported) {
           $scope.screenShareSupported = supported;
           $scope.$apply();
@@ -65,12 +64,10 @@ angular.module('opentok-meet').directive('screenShareDialogs', function () {
           $scope.screenShareFailed = null;
 
           OT.checkScreenSharingCapability(function(response) {
-      console.log("------------------"+response.supported+"-----------------------"+response.extensionRegistered+"------response.extensionInstalled"+response.extensionInstalled)			  
-        
-		if (!response.supported || response.extensionRegistered === false) {
+            if (!response.supported || response.extensionRegistered === false) {
               $scope.screenShareSupported = false;
               $scope.selectingScreenSource = false;
-            } else if (response.extensionRegistered===false) {
+            } else if (response.extensionInstalled === false && response.extensionRegistered) {
               $scope.promptToInstall = true;
               $scope.selectingScreenSource = false;
             } else {
@@ -86,6 +83,7 @@ angular.module('opentok-meet').directive('screenShareDialogs', function () {
 
       $scope.installScreenshareExtension = function() {
         chrome.webstore.install('https://chrome.google.com/webstore/details/' + chromeExtensionId,
+		  console.log("our chrome extension Id is ----->"+chromeExtensionId)
           function() {
             console.log('successfully installed');
           }, function() {
